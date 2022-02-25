@@ -43,9 +43,9 @@ namespace mp4_img_extractor
       DEBUG("Opened cv capture successfully...\n");
     }
 
-    float frames = _cap.get(CV_CAP_PROP_FRAME_COUNT);
+    float frames = _cap.get(cv::CAP_PROP_FRAME_COUNT);
     DEBUG("There are %f frames in the video.\n",frames);
-    float fps = _cap.get(CV_CAP_PROP_FPS);
+    float fps = _cap.get(cv::CAP_PROP_FPS);
     DEBUG("Fps is %f for video.\n",fps);
     _duration = frames / fps;
     DEBUG("Duration of video is %f.\n",_duration);
@@ -84,11 +84,11 @@ namespace mp4_img_extractor
     float timestamp = ts * 1000;
 
     // set the timestamp in video to obtain frame
-    _cap.set(CV_CAP_PROP_POS_MSEC,timestamp);
+    _cap.set(cv::CAP_PROP_POS_MSEC,timestamp);
     DEBUG("Setting timestamp to %.5f\n",timestamp);
 
     // get real timestamp to return
-    real_ts = _cap.get(CV_CAP_PROP_POS_MSEC);
+    real_ts = _cap.get(cv::CAP_PROP_POS_MSEC);
     DEBUG("Real timestamp set to %.5f\n",real_ts);
   
     // get frame
@@ -100,7 +100,7 @@ namespace mp4_img_extractor
     while(_frame.empty() && tries<=50)
     {
       DEBUG("Frame skipped trying again for %d time: Real timestamp set to %.5f\n",tries,real_ts);
-      real_ts = _cap.get(CV_CAP_PROP_POS_MSEC);
+      real_ts = _cap.get(cv::CAP_PROP_POS_MSEC);
       _cap >> _frame;
       tries++;
     }
