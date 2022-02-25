@@ -14,6 +14,11 @@ accelerometer, gyro, and any other desired metadata.
   $ sudo apt install libboost-all-dev
 ```
 - Opencv3: [Link](http://docs.opencv.org/3.0-beta/doc/tutorials/introduction/linux_install/linux_install.html)
+  - Ubuntu/Debian:
+
+    ```sh
+      $ sudo apt-get install libopencv-dev
+    ```
 
 - libyaml-cpp for yaml file creation and parsing: [Link](https://github.com/jbeder/yaml-cpp):
 
@@ -132,6 +137,9 @@ with open("metadata.yaml", 'r') as stream:
 data['000001.jpg']['gps']['lat'] #latitude gps of image 000001.jpg
 data['000034.jpg']['ts'] #timestamp for image 000034.jpg
 ```
+
+To update gps exif data on jpg, go into the output folder and run **metadata-to-img.py**
+
 # Comments and credits
 
 - Only gps extraction is implemented so far. More metadata extraction 
